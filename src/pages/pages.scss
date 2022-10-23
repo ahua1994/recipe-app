@@ -1,0 +1,65 @@
+.Error {
+    margin: 5rem;
+    font-family: "Dancing Script", cursive;
+}
+.About {
+    h1 {
+        margin-top: 10rem;
+        color: goldenrod;
+    }
+    .intro {
+        font-size: 2rem;
+        margin-top: 4rem;
+    }
+    .info {
+        margin-top: 8rem;
+        a {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        .email {
+            display: flex;
+            justify-content: center;
+            p {
+                font-size: 1.5rem;
+                margin-left: 1rem;
+            }
+        }
+    }
+}
+.Home {
+    .logo {
+        margin-top: 2rem;
+        font-family: "Arizonia", cursive;
+        color: goldenrod;
+        font-size: 5rem;
+    }
+    .search {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin: 2rem;
+        .row {
+            margin-bottom: 0 !important;
+        }
+    }
+    .row{
+        margin: 0!important;
+    }
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        margin: 2rem;
+    }
+    .Form {
+        margin-top: 2rem;
+        width: 50vw;
+        .btn {
+            margin: 2rem;
+            transform: translate(-85px);
+        }
+    }
+}

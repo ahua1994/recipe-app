@@ -1,0 +1,36 @@
+.Navigation {
+    height: 60px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    color: gray;
+    font-family: 'Dancing Script', cursive; 
+    overflow: hidden;  
+        .logo{
+            margin-left: 1rem;
+            font-family: 'Arizonia', cursive;
+            color: goldenrod;
+            font-size: 2.4rem; 
+        } 
+    .right{
+        display: flex;
+        .home,.about,.logout{ 
+            transition: background-color 0.6s ease-in-out; 
+            width: 110px;
+            padding-top: 5px;
+            height: 100%;
+            &:hover{
+                background-color: goldenrod;
+                color: black;
+            }
+        }
+    }
+}
+ 
+a{
+    text-decoration: none!important;
+    &:visited{
+        color: unset;
+    }
+}
