@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Form, Input, Label, FormGroup, Button, Col } from "reactstrap";
 
 const Home = () => {
@@ -64,8 +65,10 @@ const Home = () => {
                     recipes.map(({ recipe }, i) => {
                         return (
                             <div className="col-3" key={i}>
-                                <p>{recipe.label}</p>
-                                <img src={recipe.image}></img>
+                                <Link to="/details" state={recipe}>
+                                    <p>{recipe.label}</p>
+                                    <img src={recipe.image}></img>
+                                </Link>
                             </div>
                         );
                     })

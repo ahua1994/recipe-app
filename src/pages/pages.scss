@@ -43,8 +43,8 @@
             margin-bottom: 0 !important;
         }
     }
-    .row{
-        margin: 0!important;
+    .row {
+        margin: 0 !important;
     }
 }
 .form {
@@ -60,6 +60,25 @@
         .btn {
             margin: 2rem;
             transform: translate(-85px);
+        }
+    }
+}
+.Details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+        margin: 3rem;
+    }
+    .logo {
+        font-family: "Arizonia", cursive;
+        color: goldenrod;
+        font-size: 5rem;
+    }
+    ul {
+        width: 400px;
+        li {
+            text-align: start;
         }
     }
 }
