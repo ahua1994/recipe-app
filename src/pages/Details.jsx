@@ -31,7 +31,7 @@ const Details = () => {
                 <Alert color="danger">This recipe contains {details.cautions?.join(", ")}</Alert>
             )}
             <Link to="/">
-                <Button className="mt-3" color="success">
+                <Button className="my-3" color="success">
                     Return To Home
                 </Button>
             </Link>

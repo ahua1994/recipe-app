@@ -1,15 +1,28 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, Input, Label, FormGroup, Button, Col, Card, CardTitle, CardImg } from "reactstrap";
+import {
+    Form,
+    Input,
+    Label,
+    FormGroup,
+    Button,
+    Col,
+    Card,
+    CardTitle,
+    CardImg,
+    Alert,
+} from "reactstrap";
 
 const Home = () => {
     const [recipes, setRecipes] = useState([]);
+    const [first, setFirst] = useState(true);
     const [search, setSearch] = useState(null);
     const [meal, setMeal] = useState("Breakfast");
     const [count, setCount] = useState(0);
     const APP_ID = "948013d6";
     const APP_KEY = "327735e720c575131160a591bfd7af53";
+
     useEffect(() => {
         axios
             .get(
@@ -21,11 +34,14 @@ const Home = () => {
             .then(x => {
                 setRecipes(x["data"]["hits"]);
             });
-    }, [count, meal, search]);
+    }, [count]);
+
     function handleSubmit(e) {
         e.preventDefault();
         setCount(count + 1);
+        setFirst(false);
     }
+
     return (
         <div className="Home">
             <h1 className="logo">Andy Hua Recipes</h1>
@@ -80,7 +96,10 @@ const Home = () => {
                         );
                     })
                 ) : (
-                    <h1>Open Your World To New Flavours!</h1>
+                    <>
+                        <h1>Open Your World To New Flavours!</h1>
+                        {!first && <Alert color="danger">No Search Results</Alert>}
+                    </>
                 )}
             </div>
         </div>
