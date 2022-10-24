@@ -42,6 +42,21 @@ const Home = () => {
         setFirst(false);
     }
 
+    function handleSort(arg) {
+        let newRecipes = [...recipes];
+        newRecipes =
+            arg === "A to Z ⬇️"
+                ? newRecipes.sort((a, b) => a.recipe.label.localeCompare(b.recipe.label))
+                : arg === "Z to A ⬇️"
+                ? newRecipes.sort((a, b) => b.recipe.label.localeCompare(a.recipe.label))
+                : arg === "Cal (ascending)"
+                ? newRecipes.sort((a, b) => a.recipe.calories - b.recipe.calories)
+                : arg === "Cal (descending)"
+                ? newRecipes.sort((a, b) => b.recipe.calories - a.recipe.calories)
+                : newRecipes;
+        setRecipes(newRecipes);
+    }
+
     return (
         <div className="Home">
             <h1 className="logo">Andy Hua Recipes</h1>
@@ -75,6 +90,23 @@ const Home = () => {
                 <Button onClick={handleSubmit} color="success">
                     Submit
                 </Button>
+                <FormGroup row>
+                    <Label for="sort">Sort By: </Label>
+                    <Col md={12}>
+                        <Input
+                            onChange={e => handleSort(e.target.value)}
+                            type="select"
+                            name="sort"
+                            id="sort"
+                        >
+                            <option> -- </option>
+                            <option> A to Z ⬇️ </option>
+                            <option> Z to A ⬇️ </option>
+                            <option> Cal (ascending) </option>
+                            <option> Cal (descending) </option>
+                        </Input>
+                    </Col>
+                </FormGroup>
             </Form>
             <div className="row">
                 {recipes.length ? (
