@@ -12,7 +12,7 @@
         margin-top: 4rem;
     }
     .info {
-        margin-top: 8rem;
+        margin-top: 8rem;   
         a {
             font-size: 1.5rem;
             margin-left: 1rem;
@@ -47,6 +47,11 @@
         margin: 0 !important;
     }
 }
+.recipe-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .form {
     display: flex;
     flex-direction: column;
@@ -69,16 +74,23 @@
     align-items: center;
     img {
         margin: 3rem;
+        height: 100%;
     }
     .logo {
+        margin-top: 2rem;
         font-family: "Arizonia", cursive;
         color: goldenrod;
         font-size: 5rem;
     }
     ul {
+        margin: 3rem;
         width: 400px;
         li {
+            font-size: 1.3rem;
             text-align: start;
         }
+    }
+    .type {
+        text-transform: capitalize;
     }
 }

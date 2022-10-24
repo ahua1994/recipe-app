@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, Input, Label, FormGroup, Button, Col } from "reactstrap";
+import { Form, Input, Label, FormGroup, Button, Col, Card, CardTitle, CardImg } from "reactstrap";
 
 const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -21,7 +21,7 @@ const Home = () => {
             .then(x => {
                 setRecipes(x["data"]["hits"]);
             });
-    }, [count]);
+    }, [count, meal, search]);
     function handleSubmit(e) {
         e.preventDefault();
         setCount(count + 1);
@@ -29,7 +29,7 @@ const Home = () => {
     return (
         <div className="Home">
             <h1 className="logo">Andy Hua Recipes</h1>
-            <Form className="search">
+            <Form onSubmit={e => e.preventDefault()} className="search">
                 <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                     <Label for="recipe">Recipe</Label>
                     <Input
@@ -64,12 +64,19 @@ const Home = () => {
                 {recipes.length ? (
                     recipes.map(({ recipe }, i) => {
                         return (
-                            <div className="col-3" key={i}>
+                            <Card
+                                color="dark"
+                                style={{ width: "315px" }}
+                                className="col-12 col-md-6 col-lg-4 my-3"
+                                key={i}
+                            >
                                 <Link to="/details" state={recipe}>
-                                    <p>{recipe.label}</p>
-                                    <img src={recipe.image}></img>
+                                    <CardTitle className="recipe-name" tag="h3">
+                                        {recipe.label}
+                                    </CardTitle>
+                                    <CardImg src={recipe.image}></CardImg>
                                 </Link>
-                            </div>
+                            </Card>
                         );
                     })
                 ) : (

@@ -8,27 +8,32 @@ const Details = () => {
     console.log(location.state);
     useEffect(() => {
         setDetails(location.state);
-    }, [details]);
-    console.log(details);
-    const { image, calories, cuisineType, ingredientLines, ingredients, label, totalTime } =
-        details;
+    }, [location.state]);
+    const { image, calories, cuisineType, dishType, ingredientLines, label } = details;
 
     return (
         <div className="Details">
             <h1 className="logo">Andy Hua Recipes</h1>
             <h1>{`${label}`}</h1>
+            <h3 className="type">
+                {cuisineType} {dishType}
+            </h3>
             <h3>{`(Yields: ${details.yield}) ${Math.trunc(calories)} cal`}</h3>
-            <img src={image} alt={label} />
-            <ul>
-                {ingredientLines?.map((x, i) => (
-                    <li key={i}>{x}</li>
-                ))}
-            </ul>
+            <div className="d-flex">
+                <img src={image} alt={label} />
+                <ul>
+                    {ingredientLines?.map((x, i) => (
+                        <li key={i}>{x}</li>
+                    ))}
+                </ul>
+            </div>
             {details.cautions?.length !== 0 && (
-                <Alert color="danger">This recipe contains {details.cautions?.join(" ")}</Alert>
+                <Alert color="danger">This recipe contains {details.cautions?.join(", ")}</Alert>
             )}
             <Link to="/">
-                <Button color="success">Return To Home</Button>
+                <Button className="mt-3" color="success">
+                    Return To Home
+                </Button>
             </Link>
         </div>
     );
