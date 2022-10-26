@@ -5,19 +5,30 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Error from "./pages/Error";
 import Details from "./pages/Details";
+import { useState } from "react";
 import "./App.scss";
+import PrivateRouter from "./pages/PrivateRouter";
 
 function App() {
+    const [loggedIn, setLoggedIn] = useState(false);
     return (
         <div className="App">
             <BrowserRouter>
-                <Navigation />
+                <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="login"
+                        element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+                    />
                     <Route path="about" element={<About />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="details" element={<Details />} />
                     <Route path="*" element={<Error />} />
+
+                    <Route path="/" element={<PrivateRouter loggedIn={loggedIn} />}>
+                        <Route path="/" element={<Home />} />
+                    </Route>
+                    <Route path="/details" element={<PrivateRouter loggedIn={loggedIn} />}>
+                        <Route path="details" element={<Details />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>

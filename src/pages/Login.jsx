@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, Col, FormGroup, Label, Input, Button } from "reactstrap";
 
-const Login = () => {
+const Login = ({ loggedIn, setLoggedIn }) => {
+    const navigate = useNavigate();
     return (
         <div className="form">
             <h1>Login</h1>
@@ -40,11 +41,18 @@ const Login = () => {
                             size: 10,
                         }}
                     >
-                        <Link to="/">
-                            <Button size="lg" className="btn" color="success">
-                                Sign In
-                            </Button>
-                        </Link>
+                        <Button
+                            size="lg"
+                            className="btn"
+                            color="success"
+                            onClick={e => {
+                                e.preventDefault();
+                                setLoggedIn(true);
+                                navigate("/");
+                            }}
+                        >
+                            Sign In
+                        </Button>
                     </Col>
                 </FormGroup>
             </Form>

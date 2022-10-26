@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Navigation.scss";
 
-function Navigation() {
+function Navigation({ loggedIn, setLoggedIn }) {
     return (
         <div className="Navigation">
             <Link to="/">
@@ -15,8 +15,13 @@ function Navigation() {
                 <Link to="/about">
                     <div className="about">About</div>
                 </Link>
-                <Link to="/login">
-                    <div className="logout">Logout</div>
+                <Link
+                    to="/login"
+                    onClick={() => {
+                        setLoggedIn(false);
+                    }}
+                >
+                    <div className="logout">{loggedIn ? "Logout" : "Login"}</div>
                 </Link>
             </div>
         </div>
