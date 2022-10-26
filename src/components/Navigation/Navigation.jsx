@@ -19,6 +19,7 @@ function Navigation({ loggedIn, setLoggedIn }) {
                     to="/login"
                     onClick={() => {
                         setLoggedIn(false);
+                        localStorage.removeItem("Auth");
                     }}
                 >
                     <div className="logout">{loggedIn ? "Logout" : "Login"}</div>

@@ -49,6 +49,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                                 e.preventDefault();
                                 setLoggedIn(true);
                                 navigate("/");
+                                localStorage.setItem("Auth", "true");
                             }}
                         >
                             Sign In

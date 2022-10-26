@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Alert, Button } from "reactstrap";
+import { Alert, Button, Spinner } from "reactstrap";
 
 const Details = () => {
     const [details, setDetails] = useState({});
     const location = useLocation();
     console.log(location.state);
     useEffect(() => {
-        setDetails(location.state);
+        setDetails(location.state || {});
     }, [location.state]);
     const { image, calories, cuisineType, dishType, ingredientLines, label } = details;
-
-    return (
+    return Object.keys(details).length ? (
         <div className="Details">
             <h1 className="logo">Andy Hua Recipes</h1>
             <h1>{`${label}`}</h1>
@@ -32,6 +31,16 @@ const Details = () => {
             )}
             <Link to="/">
                 <Button className="my-3" color="success">
+                    Return To Home
+                </Button>
+            </Link>
+        </div>
+    ) : (
+        <div className="d-flex flex-column align-items-center">
+            <h1 className="mt-5">Please Select A Recipe From The Home Page</h1>
+            <Spinner className="mt-5"></Spinner>
+            <Link to="/">
+                <Button className="mt-5" color="success">
                     Return To Home
                 </Button>
             </Link>

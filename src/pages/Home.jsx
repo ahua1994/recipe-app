@@ -43,6 +43,7 @@ const Home = () => {
     }
 
     function handleSort(arg) {
+        if (recipes.length === 0) return;
         let newRecipes = [...recipes];
         newRecipes =
             arg === "A to Z ⬇️"

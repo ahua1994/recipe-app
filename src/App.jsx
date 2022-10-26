@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
+import PrivateRouter from "./pages/PrivateRouter";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -7,10 +8,10 @@ import Error from "./pages/Error";
 import Details from "./pages/Details";
 import { useState } from "react";
 import "./App.scss";
-import PrivateRouter from "./pages/PrivateRouter";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const auth = localStorage.getItem("Auth");
+    const [loggedIn, setLoggedIn] = useState(auth ? true : false);
     return (
         <div className="App">
             <BrowserRouter>
@@ -26,9 +27,7 @@ function App() {
                     <Route path="/" element={<PrivateRouter loggedIn={loggedIn} />}>
                         <Route path="/" element={<Home />} />
                     </Route>
-                    <Route path="/details" element={<PrivateRouter loggedIn={loggedIn} />}>
-                        <Route path="details" element={<Details />} />
-                    </Route>
+                    <Route path="details" element={<Details />} />
                 </Routes>
             </BrowserRouter>
         </div>
