@@ -9,6 +9,7 @@ const Details = () => {
     useEffect(() => {
         setDetails(location.state || {});
     }, [location.state]);
+    console.log(details);
     const { image, calories, cuisineType, dishType, ingredientLines, label } = details;
     return Object.keys(details).length ? (
         <div className="Details">
